@@ -13,3 +13,6 @@ So in the process of learning-
       Add bullets + 1 snippet + 1 mini-task.
 
       This is the anti-forgetting system.
+2. While making Notes, Add
+     a) Title, notes material including screenshot
+     b) At the End, Add 10 or 15 Interview question or answer on it
