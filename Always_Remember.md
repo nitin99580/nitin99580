@@ -18,3 +18,5 @@ So in the process of learning-
      a) Title, notes material including screenshot
    
      b) At the End, Add 10 or 15 Interview question or answer on it
+
+3. Make weekly target, and upon achieving - Relax yourself....Confidece is built in-progress....So this progress is appreciable, dont burden yourself from achieving goal very fast
