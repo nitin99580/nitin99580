@@ -1,0 +1,127 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Chapter 1</title><style>
+body{font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;max-width:820px;margin:24px auto;padding:0 16px}
+h1,h2,h3{font-family:Calibri,Arial,sans-serif}h1{font-size:20pt;color:#1F3864}h2{font-size:14pt;color:#2F5496}h3{font-size:12pt;color:#2F5496}
+pre{font-family:Consolas,monospace;font-size:10pt;line-height:1.25;color:#000000;background:#F2F2F2;border-left:4px solid #4472C4;padding:8px 12px;margin:4pt 0 10pt 0;white-space:pre-wrap}
+code{font-family:Consolas,monospace;color:#A31515;background:#F2F2F2}
+</style></head><body>
+<h1>Chapter 1: Variables &amp; Data Types</h1>
+
+<h2>1. Overview</h2>
+<p>A variable is a named box that stores a value. We use variables to keep test data like usernames, URLs and status codes.</p>
+<p>Every value has a data type, such as string, number or boolean. The type tells us what kind of value it is.</p>
+
+<h2>2. Core Concepts</h2>
+
+<h3>2.1 let</h3>
+<p><code>let</code> creates a variable whose value can change later.</p>
+<pre>let userName = "Amit";
+console.log(userName);
+userName = "Neha";
+console.log(userName);</pre>
+<p><b>Output:</b></p>
+<pre>Amit
+Neha</pre>
+<p>We cannot declare the same <code>let</code> variable twice in the same block.</p>
+<pre>let count = 1;
+let count = 2;</pre>
+<p><b>Output:</b></p>
+<pre>SyntaxError: Identifier 'count' has already been declared</pre>
+
+<h3>2.2 const</h3>
+<p><code>const</code> creates a variable that cannot be reassigned. We use it for values that should not change, like a base URL.</p>
+<pre>const baseUrl = "https://test.com";
+console.log(baseUrl);
+baseUrl = "https://dev.com";</pre>
+<p><b>Output:</b></p>
+<pre>https://test.com
+TypeError: Assignment to constant variable.</pre>
+<p>With objects and arrays, we cannot reassign the variable. But we can still change what is inside.</p>
+<pre>const user = { name: "Amit" };
+user.name = "Neha";
+console.log(user);
+const browsers = ["chrome"];
+browsers.push("firefox");
+console.log(browsers);</pre>
+<p><b>Output:</b></p>
+<pre>{ name: 'Neha' }
+[ 'chrome', 'firefox' ]</pre>
+
+<h3>2.3 var</h3>
+<p><code>var</code> is the old way to create variables. It can be declared again, it is hoisted (we can use it before the line where we declare it, and it gives <code>undefined</code>), and it ignores block <code>{ }</code> scope.</p>
+<pre>console.log(status);
+var status = "pass";
+console.log(status);
+if (true) {
+  var browser = "chrome";
+}
+console.log(browser);</pre>
+<p><b>Output:</b></p>
+<pre>undefined
+pass
+chrome</pre>
+<p><code>var</code> allows the same name again:</p>
+<pre>var count = 1;
+var count = 2;
+console.log(count); // 2</pre>
+<p><code>let</code> respects the block. So the variable is not visible outside <code>{ }</code>:</p>
+<pre>if (true) {
+  let browser = "chrome";
+}
+console.log(browser);</pre>
+<p><b>Output:</b></p>
+<pre>ReferenceError: browser is not defined</pre>
+<p>Rule: use <code>const</code> by default, use <code>let</code> when the value must change, and avoid <code>var</code>.</p>
+
+<h3>2.4 string</h3>
+<p>A string is text. We can write it with double quotes, single quotes or backticks. Backticks let us put variables inside with <code>${ }</code>.</p>
+<pre>const firstName = "Amit";
+const course = 'JavaScript';
+const message = `Hello ${firstName}`;
+console.log(firstName);
+console.log(course);
+console.log(message);</pre>
+<p><b>Output:</b></p>
+<pre>Amit
+JavaScript
+Hello Amit</pre>
+
+<h3>2.5 number</h3>
+<p>JavaScript has one number type for both whole numbers and decimals. Wrong math gives special values like <code>Infinity</code> and <code>NaN</code> (Not a Number).</p>
+<pre>const statusCode = 200;
+const price = 99.5;
+console.log(statusCode + price); // 299.5
+console.log(10 / 0);             // Infinity
+console.log("abc" * 2);          // NaN</pre>
+
+<h3>2.6 boolean</h3>
+<p>A boolean has only two values: <code>true</code> or <code>false</code>. Comparisons also give a boolean.</p>
+<pre>const isLoggedIn = true;
+const isAdmin = false;
+console.log(isLoggedIn); // true
+console.log(isAdmin);    // false
+console.log(5 &gt; 3);      // true</pre>
+
+<h3>2.7 null</h3>
+<p><code>null</code> means "empty on purpose". We set it ourselves when there is no value yet.</p>
+<pre>let errorMessage = null;
+console.log(errorMessage); // null</pre>
+
+<h3>2.8 undefined</h3>
+<p><code>undefined</code> means a value was never given. JavaScript sets it by itself, for example for a variable with no value or a missing object property.</p>
+<pre>let token;
+console.log(token);    // undefined
+const user = { name: "Amit" };
+console.log(user.age); // undefined</pre>
+
+<h3>2.9 typeof</h3>
+<p><code>typeof</code> tells us the type of a value as a string. Note: <code>typeof null</code> gives <code>object</code> (an old JavaScript bug), and arrays also give <code>object</code>.</p>
+<pre>console.log(typeof "Amit");          // string
+console.log(typeof 200);             // number
+console.log(typeof true);            // boolean
+console.log(typeof undefined);       // undefined
+console.log(typeof null);            // object
+console.log(typeof { name: "Amit" }); // object
+console.log(typeof [1, 2, 3]);       // object
+console.log(typeof function () {});  // function</pre>
+
+</body></html>
